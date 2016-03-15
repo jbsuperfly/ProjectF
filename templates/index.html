@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Journey Begins</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="search">
+        <h1>Look through the <span>MYSTERIES</span> of the Web</h1>
+        <form action="/through_the_tubes" method="POST" class="form-inline" role="form">
+            <fieldset>
+                <legend>Search The <span>Tubes</span>:</legend>
+                    <div class="form-group">
+                        <label for="url">URL:</label>
+                            <input type="url" class="form-control" name="url" placeholder="Website URL">
+                    </div>
+                        <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                        </button>
+            </fieldset>
+        </form>
+    </div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger" role="alert">{{message}}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="cssload-container">
+        <div class="cssload-shaft1"></div>
+        <div class="cssload-shaft2"></div>
+        <div class="cssload-shaft3"></div>
+        <div class="cssload-shaft4"></div>
+        <div class="cssload-shaft5"></div>
+        <div class="cssload-shaft6"></div>
+        <div class="cssload-shaft7"></div>
+        <div class="cssload-shaft8"></div>
+        <div class="cssload-shaft9"></div>
+        <div class="cssload-shaft10"></div>
+    </div>
+</body>
+</html>

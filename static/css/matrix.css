@@ -1,0 +1,57 @@
+* {
+    font-family: 'Andale Mono', AndaleMono, monospace;
+    font-variant: small-caps;
+    /*border:1px dashed red;*/
+}
+.text{
+    width:18px;
+    margin-left: 10px;
+}
+    .text h1{
+        font-family: 'Andale Mono', AndaleMono, monospace;
+        font-weight: 100;
+        text-align: top;
+        word-wrap: break-word;
+    }
+    .text span{
+        font-weight: bolder;
+        color: #1CFF06;
+    }
+    h4 span{
+        font-weight: bolder;
+        color: #1CFF06;
+    }
+.code{
+    width:750px;
+    height:max-height;
+    max-height: 800px;
+    overflow: hidden;
+    background-color: black;
+    border: 1px solid #1CFF06;
+}
+p {
+    color: #1CFF06;
+}
+.view{
+    position:fixed;
+    overflow:auto;
+}
+.home{
+    position: relative;
+    top: -577px;
+}
+.view, .home{
+    display: inline-block;
+}
+.text, .code, .view{
+    display: inline-block;
+}
+.form-inline{
+    width:300px;
+    position: relative;
+    top: -100px;
+    margin-left: 5px;
+}
+.code, .form-inline{
+    display: inline-block;
+}

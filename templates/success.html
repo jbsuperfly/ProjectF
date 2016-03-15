@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>A Look Behind</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/success.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="text">
+        <h1><span>S</span>earched <span>S</span>ite <span>C</span>ode</h1>
+    </div>
+    <div class="code">
+        {% for tag in tags %}
+            <p>{{tag}}</p>
+        {% endfor %}
+    </div>
+    <div class="view">
+        <div class="text">
+            <h1><span>V</span>iew <span>T</span>he <span>S</span>ite <span>H</span>ere</h1>
+        </div>
+        <object type="text/html" data="{{url}}" width="800px" height="600px" style="border:5px groove #1CFF06">
+        </object>
+        <div class="home">
+            <form action="/home" method="POST">
+                <button type="submit" class="btn btn-default">
+                    Home <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <form action="/deeper_through_the_tubes" method="POST" class="form-inline" role="form">
+        <h4>Take a <span>Deeper</span> Look:</h4>
+                <input type="hidden" name="url" value="{{url}}">
+                <input type="text" autocomplete="off" class="form-control" name="search" placeholder="Search for Something">
+            </div>
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+    </form>
+    <div class="pill">
+        <form action="/matrix" method="POST">
+            <input type="hidden" name="url" value="{{url}}">
+            <button type="submit" class="btn btn-default">
+                You Ready? <span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>
+            </button>
+        </form>
+    </div>
+</body>
+</html>

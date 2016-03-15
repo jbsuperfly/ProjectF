@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>You Said You Were Ready</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/matrix.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="text">
+        <h1><span>W</span>elcome <span>t</span>o <span>t</span>he <span>Matrix</span></h1>
+    </div>
+    <div class="code">
+        <div align="center">
+            <canvas id="q" width="50" height="1000">Sorry Browser Won't Support</canvas><br/><br/>
+        </div>
+    </div>
+    <div class="view">
+        <div class="text">
+            <h1><span>V</span>iew <span>T</span>he <span>S</span>ite <span>H</span>ere</h1>
+        </div>
+        <object type="text/html" data="{{url}}" width="800" height="600" style="border:5px groove #1CFF06">
+        </object>
+        <div class="home">
+            <form action="/home" method="POST">
+                <button type="submit" class="btn btn-default">
+                    Home <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <form action="/deeper_through_the_tubes" method="POST" class="form-inline" role="form">
+        <h4>Take a <span>Step</span> Back:</h4>
+                <input type="hidden" name="url" value="{{url}}">
+                <input type="text" autocomplete="off" class="form-control" name="search" placeholder="Search for Something">
+            </div>
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+    </form>
+<!-- THE CODE FROM THE MATRIX SCROLL IS EDITED FROM ORGINAL CODE ALREADY MADE BY Arunkumar Gudelli found at http://www.arungudelli.com/html5/matrix-effect-using-html5-and-javascript/ -->
+    <script>
+            $(document).ready(function(){
+            var s=window.screen;
+            var width = q.width=s.width;
+            var height = q.height;
+            var yPositions = Array(300).join(0).split('');
+            var ctx=q.getContext('2d');
+            console.log (soup);
+            var soup = {{soup | tojson}};
+            length = (soup.length-1)
+            var fonts = ['Georgia, serif', '"Palatino Linotype", "Book Antiqua", Palatino, serif', '"Times New Roman", Times, serif', 'Arial, Helvetica, sans-serif', '"Arial Black", Gadget, sans-serif', '"Comic Sans MS", cursive, sans-serif', 'Impact, Charcoal, sans-serif', '"Lucida Sans Unicode", "Lucida Grande", sans-serif', 'Tahoma, Geneva, sans-serif', '"Trebuchet MS", Helvetica, sans-serif', 'Verdana, Geneva, sans-serif', '"Courier New", Courier, monospace', '"Lucida Console", Monaco, monospace'];
+            // var fonts = ['Georgia', 'Arial', 'Impact', 'Tahoma', 'Verdana'];
+
+            var draw = function () {
+              ctx.fillStyle='rgba(0,0,0,.05)';
+              ctx.fillRect(0,0,width,height);
+              ctx.fillStyle='#0F0';
+              ctx.font = '10pt '+fonts[Math.floor(Math.random()*fonts.length)];
+              // console.log(ctx.font)
+              yPositions.map(function(y, index){
+                text = soup[Math.floor(Math.random()*length)];
+                x = (index * 10)+10;
+                q.getContext('2d').fillText(text, x, y);
+             if(y > 100 + Math.random()*1e4)
+             {
+               yPositions[index]=0;
+             }
+             else
+             {
+                  yPositions[index] = y + 10;
+             }
+              });
+            };
+            RunMatrix();
+            function RunMatrix()
+            {
+            if(typeof Game_Interval != "undefined") clearInterval(Game_Interval);
+             Game_Interval = setInterval(draw, 33);
+            }
+
+            })
+        </script>
+</body>
+</html>

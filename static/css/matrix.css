@@ -4,12 +4,12 @@
     /*border:1px dashed red;*/
 }
 .text{
-    width:18px;
-    margin-left: 10px;
+    width:1%;
+    margin-left: 1%;
+    margin-right: 1%;
 }
-    .text h1{
+    .text h2{
         font-family: 'Andale Mono', AndaleMono, monospace;
-        font-weight: 100;
         text-align: top;
         word-wrap: break-word;
     }
@@ -21,37 +21,46 @@
         font-weight: bolder;
         color: #1CFF06;
     }
+.view {
+    width: 45%;
+    min-width: 50%;
+    height: 700px;
+    max-height: 60%;
+    min-height: 60%;
+    float: left;
+}
 .code{
-    width:750px;
-    height:max-height;
-    max-height: 800px;
-    overflow: hidden;
+    width:95%;
+    height:100%;
+    max-height: 100%;
+    min-height: 100%;
+    overflow: auto;
     background-color: black;
     border: 1px solid #1CFF06;
 }
-p {
+.text, .code {
+    display: inline-block;
+}
+.form-inline button{
+    background-color: black;
     color: #1CFF06;
+    border-color: #1CFF06;
 }
-.view{
-    position:fixed;
-    overflow:auto;
+    .form-inline button:hover{
+        background-color: #1CFF06;
+        color: black;
+        border-color: black;
+    }
+.home button{
+    background-color: black;
+    color: #1CFF06;
+    border-color: #1CFF06;
 }
-.home{
-    position: relative;
-    top: -577px;
-}
-.view, .home{
-    display: inline-block;
-}
-.text, .code, .view{
-    display: inline-block;
-}
-.form-inline{
-    width:300px;
-    position: relative;
-    top: -100px;
-    margin-left: 5px;
-}
-.code, .form-inline{
+    .home button:hover{
+        background-color: blue;
+        color: white;
+        border-color: blue;
+    }
+.form-inline, .home {
     display: inline-block;
 }

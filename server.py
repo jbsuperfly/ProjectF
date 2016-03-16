@@ -17,7 +17,7 @@ def index():
     return render_template('index.html')
 @app.route('/home', methods = ['POST'])
 def home():
-    return render_template('index.html')
+    return redirect('/') 
 @app.route('/through_the_tubes', methods = ['POST'])
 def search_url():
     errors = []

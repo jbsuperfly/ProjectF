@@ -10,20 +10,29 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="text">
-        <h1><span>W</span>elcome <span>t</span>o <span>t</span>he <span>Matrix</span></h1>
-    </div>
-    <div class="code">
-        <div align="center">
-            <canvas id="q" width="50" height="1000">Sorry Browser Won't Support</canvas><br/><br/>
-        </div>
-    </div>
     <div class="view">
         <div class="text">
-            <h1><span>V</span>iew <span>T</span>he <span>S</span>ite <span>H</span>ere</h1>
+            <h2><span>W</span>elcome <span>t</span>o <span>t</span>he <span>Matrix</span></h2>
         </div>
-        <object type="text/html" data="{{url}}" width="800" height="600" style="border:5px groove #1CFF06">
+        <div class="code">
+                <canvas id="q" height="1000">Sorry Browser Won't Support</canvas>
+        </div>
+    </div>
+
+    <div class="view">
+        <div class="text">
+            <h2><span>V</span>iew <span>T</span>he <span>S</span>ite <span>H</span>ere</h2>
+        </div>
+        <object type="text/html" data="{{url}}" width="95%" height="600px" style="border:5px groove #1CFF06">
         </object>
+        <form action="/deeper_through_the_tubes" method="POST" class="form-inline" role="form">
+            <h4>Take a <span>Step</span> Back:</h4>
+                <input type="hidden" name="url" value="{{url}}">
+                <input type="text" autocomplete="off" class="form-control" name="search" placeholder="Search for Something">
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+        </form>
         <div class="home">
             <form action="/home" method="POST">
                 <button type="submit" class="btn btn-default">
@@ -32,15 +41,6 @@
             </form>
         </div>
     </div>
-    <form action="/deeper_through_the_tubes" method="POST" class="form-inline" role="form">
-        <h4>Take a <span>Step</span> Back:</h4>
-                <input type="hidden" name="url" value="{{url}}">
-                <input type="text" autocomplete="off" class="form-control" name="search" placeholder="Search for Something">
-            </div>
-            <button type="submit" class="btn btn-default">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            </button>
-    </form>
 <!-- THE CODE FROM THE MATRIX SCROLL IS EDITED FROM ORGINAL CODE ALREADY MADE BY Arunkumar Gudelli found at http://www.arungudelli.com/html5/matrix-effect-using-html5-and-javascript/ -->
     <script>
             $(document).ready(function(){

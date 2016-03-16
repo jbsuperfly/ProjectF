@@ -17,7 +17,7 @@ def index():
     return render_template('index.html')
 @app.route('/home', methods = ['POST'])
 def home():
-    return redirect('/') 
+    return redirect('/')
 @app.route('/through_the_tubes', methods = ['POST'])
 def search_url():
     errors = []
@@ -26,35 +26,30 @@ def search_url():
         return render_template('index.html', errors=errors)
     else:
         url = request.form['url'] #url you want to scrape/crawl through
-        try:
-            urllib2.urlopen(url)
-        except:
-            print 'ERROR: '+url+' does not exist'
-        else:
-            source_code = requests.get(url) # gets the code for the page. allowing the crawler to crawl through
-            plain_text = source_code.text # turns code into text
-            soup = BeautifulSoup(plain_text) #generates the text
-            soup = str(soup)
-            #converts object to a string
-            # print (soup)
-            tags = []
-            idx = 0
-            i = 0
-            line = ""
-            while i < len(soup):
-                if soup[i] == '\n':
-                    line+=soup[i]
-                    tags.insert(idx, line)
-                    line = ""
-                    idx+=1
-                    i+=1
-                elif soup[i] == ' ':
-                    i+=1
-                else:
-                    line+=soup[i]
-                    i+=1
-            # print (soup)
-            return render_template('success.html', tags=tags, url=url)
+        source_code = requests.get(url) # gets the code for the page. allowing the crawler to crawl through
+        plain_text = source_code.text # turns code into text
+        soup = BeautifulSoup(plain_text) #generates the text
+        soup = str(soup)
+        #converts object to a string
+        # print (soup)
+        tags = []
+        idx = 0
+        i = 0
+        line = ""
+        while i < len(soup):
+            if soup[i] == '\n':
+                line+=soup[i]
+                tags.insert(idx, line)
+                line = ""
+                idx+=1
+                i+=1
+            elif soup[i] == ' ':
+                i+=1
+            else:
+                line+=soup[i]
+                i+=1
+        # print (soup)
+        return render_template('success.html', tags=tags, url=url)
 @app.route('/deeper_through_the_tubes', methods = ['POST'])
 def search_deeper():
     errors = []

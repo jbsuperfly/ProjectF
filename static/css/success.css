@@ -41,6 +41,9 @@
 p {
     color: #1CFF06;
 }
+p:hover {
+    color: white;
+}
 .text, .code {
     display: inline-block;
 }
@@ -60,6 +63,7 @@ p {
     border-color: #1CFF06;
 }
     .home button:hover{
+        border-radius: 20px;
         background-color: blue;
         color: white;
         border-color: blue;
@@ -70,6 +74,7 @@ p {
     border-color: #1CFF06;
 }
     .pill button:hover{
+        border-radius: 20px;
         background-color: red;
         color: white;
         border-color: red;

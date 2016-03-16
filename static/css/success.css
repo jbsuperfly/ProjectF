@@ -4,12 +4,12 @@
     /*border:1px dashed red;*/
 }
 .text{
-    width:18px;
-    margin-left: 10px;
+    width:1%;
+    margin-left: .5%;
+    margin-right: .5%;
 }
     .text h1{
         font-family: 'Andale Mono', AndaleMono, monospace;
-        font-weight: 100;
         text-align: top;
         word-wrap: break-word;
     }
@@ -35,13 +35,28 @@ p {
 }
 .view{
     position:fixed;
-    overflow:auto;
 }
-.home{
-    position: relative;
-    top: -577px;
+.home button{
+    background-color: black;
+    color: #1CFF06;
+    border-color: #1CFF06;
 }
-.view, .home{
+    .home button:hover{
+        background-color: blue;
+        color: white;
+        border-color: blue;
+    }
+.pill button{
+    background-color: black;
+    color: #1CFF06;
+    border-color: #1CFF06;
+}
+    .pill button:hover{
+        background-color: red;
+        color: white;
+        border-color: red;
+    }
+.pill, .home{
     display: inline-block;
 }
 .text, .code, .view{
@@ -53,6 +68,16 @@ p {
     top: -100px;
     margin-left: 5px;
 }
+    .form-inline button{
+        background-color: black;
+        color: #1CFF06;
+        border-color: #1CFF06;
+    }
+        .form-inline button:hover{
+            background-color: #1CFF06;
+            color: black;
+            border-color: black;
+        }
 .code, .form-inline{
     display: inline-block;
 }

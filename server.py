@@ -26,12 +26,9 @@ def search_url():
         return render_template('index.html', errors=errors)
     else:
         url = request.form['url'] #url you want to scrape/crawl through
-        source_code = requests.get(url) # gets the code for the page. allowing the crawler to crawl through
-        plain_text = source_code.text # turns code into text
-        soup = BeautifulSoup(plain_text) #generates the text
+        soup = getsoup(url)
         soup = str(soup)
         #converts object to a string
-        # print (soup)
         tags = []
         idx = 0
         i = 0
@@ -59,9 +56,7 @@ def search_deeper():
     else:
         url = request.form['url'] #url you want to scrape/crawl through
         search = request.form['search']#what you search for
-        source_code = requests.get(url) # gets the code for the page. allowing the crawler to crawl through
-        plain_text = source_code.text # turns code into text
-        soup = BeautifulSoup(plain_text) #generates the text
+        soup = getsoup(url)
         soup = str(soup)
         tags = []
         idx = 0
@@ -90,9 +85,13 @@ def search_deeper():
 @app.route('/matrix', methods = ['POST'])
 def search_deepest():
     url = request.form['url'] #url you want to scrape/crawl through
+    soup = getsoup(url)
+    soup = str(soup)
+    return render_template('matrix.html', soup=soup, url=url)
+def getsoup(url):
     source_code = requests.get(url) # gets the code for the page. allowing the crawler to crawl through
     plain_text = source_code.text # turns code into text
     soup = BeautifulSoup(plain_text) #generates the text
-    soup = str(soup)
-    return render_template('matrix.html', soup=soup, url=url)
+    return (soup)
+
 app.run(debug=True)

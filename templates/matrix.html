@@ -15,7 +15,7 @@
             <h2><span>W</span>elcome <span>t</span>o <span>t</span>he <span>Matrix</span></h2>
         </div>
         <div class="code">
-                <canvas id="q" height="1000">Sorry Browser Won't Support</canvas>
+                <canvas id="q" height="690" width="50">Sorry Browser Won't Support</canvas>
         </div>
     </div>
 
@@ -23,7 +23,7 @@
         <div class="text">
             <h2><span>V</span>iew <span>T</span>he <span>S</span>ite <span>H</span>ere</h2>
         </div>
-        <object type="html" data="{{url}}" width="95%" height="600px" style="border:5px groove #1CFF06">
+        <object type="text/html" data="{{url}}" width="95%" height="600px" style="border:5px groove #1CFF06">
         </object>
         <form action="/deeper_through_the_tubes" method="POST" class="form-inline" role="form">
             <h4>Take a <span>Step</span> Back:</h4>
@@ -49,7 +49,6 @@
             var height = q.height;
             var yPositions = Array(300).join(0).split('');
             var ctx=q.getContext('2d');
-            console.log (soup);
             var soup = {{soup | tojson}};
             length = (soup.length-1)
             var fonts = ['Georgia, serif', '"Palatino Linotype", "Book Antiqua", Palatino, serif', '"Times New Roman", Times, serif', 'Arial, Helvetica, sans-serif', '"Arial Black", Gadget, sans-serif', '"Comic Sans MS", cursive, sans-serif', 'Impact, Charcoal, sans-serif', '"Lucida Sans Unicode", "Lucida Grande", sans-serif', 'Tahoma, Geneva, sans-serif', '"Trebuchet MS", Helvetica, sans-serif', 'Verdana, Geneva, sans-serif', '"Courier New", Courier, monospace', '"Lucida Console", Monaco, monospace'];
@@ -59,7 +58,7 @@
               ctx.fillStyle='rgba(0,0,0,.05)';
               ctx.fillRect(0,0,width,height);
               ctx.fillStyle='#0F0';
-              ctx.font = '10pt '+fonts[Math.floor(Math.random()*fonts.length)];
+              ctx.font = '9pt '+fonts[Math.floor(Math.random()*fonts.length)];
               // console.log(ctx.font)
               yPositions.map(function(y, index){
                 text = soup[Math.floor(Math.random()*length)];

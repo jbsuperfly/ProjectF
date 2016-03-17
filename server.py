@@ -49,16 +49,15 @@ def search_url():
         return render_template('success.html', tags=tags, url=url)
 @app.route('/deeper_through_the_tubes', methods = ['POST'])
 def search_deeper():
-    errors = []
+    tags = []
+    url = request.form['url'] #url you want to scrape/crawl through
+    search = request.form['search']#what you search for
     if not request.form['search']:
-        errors.append('You have to give me something to search for')
-        return render_template('index.html', errors=errors)
+        tags.append('You have to give me something to search for')
+        return render_template('success.html', tags=tags, url=url)
     else:
-        url = request.form['url'] #url you want to scrape/crawl through
-        search = request.form['search']#what you search for
         soup = getsoup(url)
         soup = str(soup)
-        tags = []
         idx = 0
         i = 0
         line = ""

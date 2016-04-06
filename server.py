@@ -1,12 +1,11 @@
 from flask import Flask, render_template, request, redirect, session
 from bs4 import BeautifulSoup
-from datetime import datetime
 import urlparse
 import urllib2 #allows for urlopen function
 import requests
-import pprint #prints nicely
-import random #allows for random time interval
-import time #allows for time interval
+import pprint #prints nicely if needed
+import random #allows for random time interval later
+import time #allows for time interval later
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -29,23 +28,7 @@ def search_url():
         soup = getsoup(url)
         soup = str(soup)
         #converts object to a string
-        tags = []
-        idx = 0
-        i = 0
-        line = ""
-        while i < len(soup):
-            if soup[i] == '\n':
-                line+=soup[i]
-                tags.insert(idx, line)
-                line = ""
-                idx+=1
-                i+=1
-            elif soup[i] == ' ':
-                i+=1
-            else:
-                line+=soup[i]
-                i+=1
-        # print (soup)
+        tags = soup.split('\n')
         return render_template('success.html', tags=tags, url=url)
 @app.route('/deeper_through_the_tubes', methods = ['POST'])
 def search_deeper():
@@ -58,24 +41,15 @@ def search_deeper():
     else:
         soup = getsoup(url)
         soup = str(soup)
+        code = soup.split('\n')
         idx = 0
         i = 0
-        line = ""
-        while i < len(soup):
-            if soup[i] == '\n':
-                line+=soup[i]
-                if line.find(search) != -1:
-                    tags.insert(idx, line)
-                    line = ""
-                    idx+=1
-                    i+=1
-                else:
-                    line = ""
-                    i+=1
-            elif soup[i] == ' ':
+        while i < len(code):
+            if code[i].find(search) != -1:
+                tags.insert(idx, code[i])
+                idx+=1
                 i+=1
             else:
-                line+=soup[i]
                 i+=1
         if len(tags) < 1:
             tags.insert(idx, 'Your Search Has Returned Nothing')

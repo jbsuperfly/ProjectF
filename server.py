@@ -7,16 +7,20 @@ import pprint #prints nicely if needed
 import random #allows for random time interval later
 import time #allows for time interval later
 import sys
+
 reload(sys)
 sys.setdefaultencoding("utf-8")
 app = Flask(__name__)
 app.secret_key = 'fig'
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 @app.route('/home', methods = ['POST'])
 def home():
     return redirect('/')
+
 @app.route('/through_the_tubes', methods = ['POST'])
 def search_url():
     errors = []
@@ -29,6 +33,7 @@ def search_url():
         #converts object to a string
         tags = soup.split('\n')
         return render_template('success.html', tags=tags, url=url)
+
 @app.route('/deeper_through_the_tubes', methods = ['POST'])
 def search_deeper():
     tags = []
@@ -53,16 +58,18 @@ def search_deeper():
             tags.insert(idx, 'Your Search Has Returned Nothing')
         # print (soup)
         return render_template('success.html', tags=tags, url=url)
+
 @app.route('/matrix', methods = ['POST'])
 def search_deepest():
     url = request.form['url'] #url you want to scrape/crawl through
     soup = getsoup(url)
     return render_template('matrix.html', soup=soup, url=url)
+
 def getsoup(url):
     source_code = requests.get(url) # gets the code for the page. allowing the crawler to crawl through
     plain_text = source_code.text # turns code into text
-    soup = BeautifulSoup(plain_text) #generates the text
-    soup = str(soup)
+    soup = str(BeautifulSoup(plain_text, 'html.parser')) #generates the text
+    # soup = str(soup)
     return (soup)
 
 app.run(debug=True)
